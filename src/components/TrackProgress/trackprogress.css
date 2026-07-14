@@ -1,0 +1,37 @@
+.lt-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.lt-track__rail {
+  display: flex;
+  gap: 4px; /* gap = ½ segment height (8px) */
+  flex: 1;
+  min-width: 0;
+}
+
+.lt-track__seg {
+  position: relative;
+  flex: 1;
+  height: 8px;
+  border-radius: 4px; /* corner radius = ½ height */
+  background: var(--accent-soft); /* remaining — lavender (in dark theme — violet-surface-dark) */
+  overflow: hidden;
+}
+
+.lt-track__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 4px;
+  background: var(--accent); /* completed — violet */
+}
+
+.lt-track__value {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  flex: none;
+}

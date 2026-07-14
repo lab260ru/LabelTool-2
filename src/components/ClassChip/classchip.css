@@ -1,0 +1,82 @@
+.lt-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 12px; /* pill */
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* speech — lavender (text — darkened violet: AA contrast) */
+.lt-chip--speech {
+  background: var(--lavender);
+  color: var(--lt-accent-text);
+}
+
+:root[data-theme='dark'] .lt-chip--speech {
+  background: var(--violet-surface-dark);
+  color: var(--lavender);
+}
+
+/* music — coral (light backdrop, darkened coral text: accent ≤10%) */
+.lt-chip--music {
+  background: var(--lt-danger-soft);
+  color: var(--lt-danger-text);
+}
+
+/* noise — gray */
+.lt-chip--noise {
+  background: color-mix(in srgb, var(--graphite) 10%, var(--bg));
+  color: var(--text-muted);
+}
+
+:root[data-theme='dark'] .lt-chip--noise {
+  background: color-mix(in srgb, var(--lavender-dark) 14%, var(--dark-bg-2));
+  color: var(--text-muted);
+}
+
+/* silence — violet-light */
+.lt-chip--silence {
+  background: var(--lt-accent-soft-strong);
+  color: var(--lt-accent-text); /* AA contrast on the soft backdrop */
+}
+
+/* Custom class color. The text is neutral (AA with ANY user-provided
+   color from label_list); the color itself is carried by the dot and backdrop. */
+.lt-chip--custom {
+  background: color-mix(in srgb, var(--lt-chip-color) 16%, var(--bg));
+  color: var(--text);
+}
+
+.lt-chip__color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--lt-chip-color);
+}
+
+.lt-chip__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: -4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.lt-chip__remove:hover {
+  opacity: 1;
+  background: color-mix(in srgb, currentColor 15%, transparent);
+}

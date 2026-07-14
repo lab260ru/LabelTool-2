@@ -1,0 +1,46 @@
+.lt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 9px;
+  border-radius: 11px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lt-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.lt-badge--ok {
+  background: var(--lt-ok-soft);
+  color: var(--ok);
+}
+
+.lt-badge--warn {
+  background: var(--lt-warn-soft);
+  color: var(--warn);
+}
+
+.lt-badge--error {
+  background: var(--lt-danger-soft);
+  color: var(--lt-danger-text); /* AA contrast on the soft backdrop */
+}
+
+.lt-badge--neutral {
+  background: color-mix(in srgb, var(--text-muted) 14%, transparent);
+  /* Slightly darker than muted: on --surface, muted does not reach 4.5:1 */
+  color: color-mix(in srgb, var(--text) 80%, var(--bg));
+}
+
+.lt-badge--progress {
+  background: var(--lt-accent-soft-strong);
+  color: var(--lt-accent-text); /* AA contrast on the soft backdrop */
+}

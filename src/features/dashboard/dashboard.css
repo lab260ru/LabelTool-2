@@ -1,0 +1,176 @@
+/* Dashboard — only theme tokens, both themes via semantic aliases. */
+
+.ltd-divider {
+  margin: 12px 0 20px;
+}
+
+.ltd-banner {
+  margin-bottom: 16px;
+}
+
+.ltd-loading {
+  display: flex;
+  justify-content: center;
+  padding: 64px 0;
+}
+
+/* --- Summary cards -------------------------------------------------------- */
+
+.ltd-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ltd-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ltd-stat__value {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 700;
+}
+
+.ltd-stat__label {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+.ltd-stat__sub {
+  color: var(--text-muted);
+}
+
+.ltd-stat--progress {
+  gap: 8px;
+  justify-content: center;
+}
+
+/* --- Block grids ----------------------------------------------------------- */
+
+/* Cards in a row are equal height (align-items: stretch by default);
+   the "Quick actions" content sits at the top by natural flow. */
+.ltd-main {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ltd-annotators {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .ltd-main,
+  .ltd-annotators {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Zombie tasks ----------------------------------------------------------- */
+
+.ltd-zombie-hint {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+}
+
+/* --- Top / bottom annotators ------------------------------------------------ */
+
+.ltd-annot-hint {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+}
+
+.ltd-annot {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ltd-annot__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ltd-annot__rank {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  background: var(--accent-soft);
+  color: var(--lt-accent-text); /* AA contrast on lavender */
+}
+
+.ltd-annot__rank--muted {
+  background: var(--lt-surface-2);
+  color: var(--text-muted);
+}
+
+.ltd-annot__who {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ltd-annot__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ltd-annot__group {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+.ltd-annot__stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex: none;
+}
+
+.ltd-annot__tasks {
+  font-weight: 700;
+}
+
+.ltd-annot__agr {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+/* --- Quick actions ---------------------------------------------------------- */
+
+.ltd-quick__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ltd-quick__row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

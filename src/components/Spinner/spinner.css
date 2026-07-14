@@ -1,0 +1,31 @@
+.lt-spinner {
+  display: inline-block;
+  flex: none;
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: lt-spin 0.8s linear infinite;
+}
+
+.lt-spinner--inline {
+  vertical-align: middle;
+}
+
+/* On a violet fill (primary button) the spinner is white */
+.lt-btn--primary .lt-spinner {
+  border-color: color-mix(in srgb, var(--lt-on-accent) 35%, transparent);
+  border-top-color: var(--lt-on-accent);
+}
+
+@keyframes lt-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lt-spinner {
+    animation-duration: 1.6s;
+  }
+}

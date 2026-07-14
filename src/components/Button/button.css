@@ -1,0 +1,79 @@
+.lt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+  white-space: nowrap;
+}
+
+.lt-btn--md {
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.lt-btn--sm {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 8px;
+}
+
+.lt-btn--full {
+  width: 100%;
+}
+
+.lt-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* primary: violet fill, white text */
+.lt-btn--primary {
+  background: var(--accent);
+  color: var(--lt-on-accent);
+}
+
+.lt-btn--primary:hover:not(:disabled) {
+  background: var(--lt-accent-hover);
+}
+
+/* secondary: outline */
+.lt-btn--secondary {
+  background: transparent;
+  border-color: var(--lt-border-strong);
+  color: var(--text);
+}
+
+.lt-btn--secondary:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+/* danger: light coral fill (coral is a spot accent, ≤10%);
+   text — darkened coral: AA contrast on the soft backdrop */
+.lt-btn--danger {
+  background: var(--lt-danger-soft);
+  color: var(--lt-danger-text);
+}
+
+.lt-btn--danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--danger) 22%, var(--bg));
+}
+
+.lt-btn__label {
+  display: inline-flex;
+  align-items: center;
+}

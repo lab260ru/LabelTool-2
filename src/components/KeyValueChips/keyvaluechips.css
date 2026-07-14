@@ -1,0 +1,117 @@
+.lt-kv {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.lt-kv__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 13px;
+  background: var(--lt-accent-soft-strong);
+  color: var(--lt-accent-text); /* AA contrast on the soft backdrop */
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+}
+
+.lt-kv__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: -4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.lt-kv__remove:hover {
+  opacity: 1;
+  background: color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.lt-kv__add {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px dashed var(--lt-border-strong);
+  border-radius: 13px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lt-kv__add:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.lt-kv__form {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+}
+
+.lt-kv__input {
+  width: 96px;
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--lt-border-strong);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 12px;
+}
+
+.lt-kv__input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+
+.lt-kv__confirm,
+.lt-kv__cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.lt-kv__confirm {
+  background: var(--accent);
+  color: var(--lt-on-accent);
+}
+
+.lt-kv__confirm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lt-kv__cancel {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.lt-kv__cancel:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
+}

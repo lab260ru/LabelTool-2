@@ -1,0 +1,285 @@
+/* ============================================================================
+   LabelTool 2 shell: a single left menu (icon rail) + content.
+   ========================================================================== */
+
+.lt-shell {
+  display: flex;
+  min-height: 100%;
+}
+
+.lt-main {
+  flex: 1;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* Feature page: uniform content padding; on wide screens it is centered
+   rather than pinned left with an empty strip on the right */
+.lt-page {
+  padding: 24px 28px 40px;
+  max-width: 1520px;
+  margin-inline: auto;
+}
+
+/* Initial-hydration fallback for lazy routes (router.tsx) */
+.lt-hydrate-fallback {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+}
+
+/* --------------------------------------------------------------------------
+   User avatar and menu (in the rail footer)
+-------------------------------------------------------------------------- */
+.lt-user__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--violet); /* avatar — a violet circle with initials */
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
+.lt-user__name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.lt-user__role {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.lt-user__menuitem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.lt-user__menuitem:hover {
+  background: var(--lt-accent-soft-strong);
+  color: var(--lt-accent-text); /* AA contrast on the soft backdrop */
+}
+
+.lt-user__menuitem--danger:hover {
+  background: var(--lt-danger-soft);
+  color: var(--lt-danger-text); /* AA contrast on the soft backdrop */
+}
+
+.lt-user__menusep {
+  height: 1px;
+  margin: 6px 4px;
+  background: var(--border);
+}
+
+/* --------------------------------------------------------------------------
+   Single left menu: a compact icon rail; the item name shown as a tooltip
+-------------------------------------------------------------------------- */
+.lt-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 64px;
+  flex: none;
+  padding: 12px 11px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  /* Sticky at full window height: logo, navigation and footer (language/theme/profile)
+     always visible. overflow visible — tooltips extend to the right over the content. */
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 20; /* tooltips and menu are drawn above .lt-main */
+}
+
+/* Logo mark at the top of the rail */
+.lt-sidebar__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  text-decoration: none;
+}
+
+.lt-sidebar__logo:hover {
+  text-decoration: none;
+}
+
+.lt-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  width: 100%;
+}
+
+.lt-sidebar__item {
+  position: relative; /* tooltip anchor */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.lt-sidebar__item:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  text-decoration: none;
+}
+
+.lt-sidebar__item--active {
+  background: var(--lt-accent-soft-strong);
+  color: var(--lt-accent-text); /* AA contrast on the soft backdrop */
+}
+
+.lt-sidebar__icon {
+  flex: none;
+}
+
+/* Item-name tooltip: an inverted chip to the right of the icon, over the content.
+   Appears on hover and keyboard focus. */
+.lt-sidebar__tip {
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.12s ease,
+    transform 0.12s ease;
+  z-index: 50;
+}
+
+.lt-sidebar__item:hover .lt-sidebar__tip,
+.lt-sidebar__item:focus-visible .lt-sidebar__tip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ── Rail footer: language (behind the globe), theme and profile ──────────── */
+
+.lt-sidebar__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+/* User avatar and its menu (opens up and to the right of the footer) */
+.lt-sidebar__user {
+  position: relative;
+}
+
+.lt-sidebar__avatar {
+  margin-top: 2px;
+}
+
+.lt-sidebar__menu {
+  position: absolute;
+  left: calc(100% + 10px);
+  bottom: 0;
+  min-width: 224px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--bg);
+  color: var(--text);
+  z-index: 50;
+}
+
+.lt-sidebar__menuhead {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px 6px;
+}
+
+.lt-sidebar__settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.lt-sidebar__langwrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.lt-sidebar__globe--open {
+  color: var(--lt-accent-text);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+/* RU/EN language choice — opens as a column below the globe */
+.lt-sidebar__lang {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.lt-sidebar__langbtn {
+  width: 36px;
+  height: 26px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.lt-sidebar__langbtn:hover {
+  color: var(--text);
+}
+
+.lt-sidebar__langbtn--active {
+  background: var(--lt-accent-soft-strong);
+  color: var(--lt-accent-text);
+}

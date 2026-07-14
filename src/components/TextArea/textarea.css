@@ -1,0 +1,5 @@
+.lt-textarea {
+  resize: vertical;
+  min-height: 72px;
+  line-height: 22px;
+}

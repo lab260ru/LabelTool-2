@@ -1,0 +1,170 @@
+/* User profile (modal from the topbar menu). Theme tokens only. */
+
+.prf-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Header: avatar circle with initials + full name and role ─────────────────────────── */
+
+.prf-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.prf-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent); /* avatar — a circle with initials, as in the topbar */
+  color: var(--lt-on-accent);
+  font-size: 20px;
+  font-weight: 700;
+  flex: none;
+}
+
+.prf-head__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.prf-head__fio {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.prf-head__role {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Fields: login, group ──────────────────────────────────────────────────── */
+
+.prf-fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  margin: 0;
+}
+
+.prf-field {
+  display: contents;
+}
+
+.prf-field dt {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.prf-field dd {
+  margin: 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+/* ── Metrics (User.metrics) ───────────────────────────────────────────────── */
+
+.prf-subtitle {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.prf-metrics {
+  display: flex;
+  gap: 12px;
+}
+
+.prf-metric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.prf-metric__value {
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.prf-metric__label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── Task-type permissions (compact labels, semantics as in Users) */
+
+.prf-perms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prf-perm {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.prf-perm--allow {
+  background: var(--lt-ok-soft);
+  color: var(--ok);
+}
+
+.prf-perm--block {
+  background: var(--lt-danger-soft);
+  color: var(--lt-danger-text); /* AA contrast on the soft background */
+}
+
+/* The value is admin-locked — a border (see the legend under the list). */
+.prf-perm--admin {
+  border-color: currentColor;
+}
+
+.prf-legend {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* ── Change password ─────────────────────────────────────────────────────────── */
+
+.prf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Hidden submit button: Enter in the fields submits the form */
+.prf-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+}

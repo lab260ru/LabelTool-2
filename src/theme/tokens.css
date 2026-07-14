@@ -1,0 +1,187 @@
+/* ============================================================================
+   LabelTool 2 — design tokens (brand book).
+   Normative: all screens use ONLY these tokens.
+   Coral is accent only (labels, highlights, errors), ≤10% of the layout area.
+   ========================================================================== */
+
+:root {
+  /* --- Base brand-book colors, theme-independent ------------------- */
+  --violet: #6d5ae6;
+  --graphite: #262b36;
+  --lavender: #d9d4f7;
+  --coral: #e8604c;
+  --white: #ffffff;
+  --surface-light: #f6f5fc;
+  --dark-bg-1: #0e1218;
+  --dark-bg-2: #14161c;
+
+  /* Dark theme — lightened tones (substituted into aliases when data-theme=dark) */
+  --violet-dark: #8b7bf0;
+  --lavender-dark: #d8dce8;
+  --violet-surface-dark: #463f6e;
+  --coral-dark: #f07a66;
+
+  /* --- Typography ------------------------------------------------- */
+  /* IMPORTANT (a deliberate decision): Sora has NO Cyrillic (only latin/latin-ext),
+     whereas Manrope does. Headings are set with the 'Sora','Manrope' stack:
+     Latin/digits are rendered by Sora, Cyrillic falls back to Manrope 700.
+     Details — src/theme/fonts.ts. */
+  --font-heading: 'Sora', 'Manrope', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+
+  /* --- Geometry ----------------------------------------------------------- */
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 16px;
+
+  /* --- Shell layers (do not override in features) ------------------------- */
+  /* Topbar — graphite in both themes (brand book "Application header"). */
+  --lt-topbar-bg: var(--graphite);
+  --lt-topbar-text: var(--white);
+  --lt-topbar-muted: color-mix(in srgb, var(--lavender-dark) 72%, transparent);
+  --lt-topbar-border: color-mix(in srgb, var(--white) 10%, transparent);
+  --lt-on-accent: var(--white);
+}
+
+/* ---------------------------------------------------------------------------
+   Light theme (and the default before ThemeProvider initializes).
+   Semantic aliases — a contract: all features use them.
+--------------------------------------------------------------------------- */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: var(--white);
+  --surface: var(--surface-light);
+  --text: var(--graphite);
+  /* 72% graphite: ≥4.5:1 on --bg/--surface/backdrops (WCAG AA) */
+  --text-muted: color-mix(in srgb, var(--graphite) 72%, var(--white));
+  --border: color-mix(in srgb, var(--graphite) 14%, transparent);
+  --accent: var(--violet);
+  --accent-soft: var(--lavender);
+  --danger: var(--coral);
+  /* Darkened to AA contrast on their own soft backdrops */
+  --ok: #166534;
+  --warn: #854d0e;
+
+  /* Utility derivatives (only from the palette) */
+  --lt-surface-2: color-mix(in srgb, var(--lavender) 26%, var(--white));
+  --lt-border-strong: color-mix(in srgb, var(--graphite) 26%, transparent);
+  --lt-accent-hover: color-mix(in srgb, var(--violet) 88%, var(--graphite));
+  --lt-danger-soft: color-mix(in srgb, var(--coral) 13%, var(--white));
+  /* Accent/coral in the ROLE OF TEXT on light backdrops (lavender, soft-strong):
+     pure --accent/--danger fall short of 4.5:1 (WCAG AA). */
+  --lt-accent-text: color-mix(in srgb, var(--violet) 70%, var(--graphite));
+  --lt-danger-text: color-mix(in srgb, var(--coral) 62%, var(--graphite));
+  --lt-ok-soft: color-mix(in srgb, var(--ok) 12%, var(--white));
+  --lt-warn-soft: color-mix(in srgb, var(--warn) 13%, var(--white));
+  --lt-accent-soft-strong: color-mix(in srgb, var(--violet) 16%, var(--white));
+  --lt-overlay: color-mix(in srgb, var(--graphite) 45%, transparent);
+  --lt-logo-contrast: var(--graphite);
+}
+
+/* ---------------------------------------------------------------------------
+   Dark theme: the lightened tones are substituted into the aliases.
+--------------------------------------------------------------------------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: var(--dark-bg-1);
+  --surface: var(--dark-bg-2);
+  --text: var(--lavender-dark);
+  /* 72% lavender: ≥4.5:1 including on light chip backdrops */
+  --text-muted: color-mix(in srgb, var(--lavender-dark) 72%, var(--dark-bg-1));
+  --border: color-mix(in srgb, var(--lavender-dark) 16%, transparent);
+  --accent: var(--violet-dark);
+  --accent-soft: var(--violet-surface-dark);
+  --danger: var(--coral-dark);
+  --ok: #46b884;
+  --warn: #dcAa3e;
+
+  --lt-surface-2: color-mix(in srgb, var(--violet-surface-dark) 26%, var(--dark-bg-2));
+  --lt-border-strong: color-mix(in srgb, var(--lavender-dark) 30%, transparent);
+  --lt-accent-hover: color-mix(in srgb, var(--violet-dark) 84%, var(--white));
+  --lt-danger-soft: color-mix(in srgb, var(--coral-dark) 18%, var(--dark-bg-2));
+  --lt-ok-soft: color-mix(in srgb, var(--ok) 16%, var(--dark-bg-2));
+  --lt-warn-soft: color-mix(in srgb, var(--warn) 15%, var(--dark-bg-2));
+  --lt-accent-soft-strong: color-mix(in srgb, var(--violet-dark) 24%, var(--dark-bg-2));
+  --lt-overlay: color-mix(in srgb, var(--dark-bg-1) 62%, transparent);
+  --lt-topbar-bg: var(--dark-bg-2);
+  --lt-topbar-border: var(--border);
+  --lt-logo-contrast: var(--white);
+  /* Text on an accent fill: white on #8b7bf0 gives only 3.4:1 —
+     in the dark theme we put dark text on the lightened violet. */
+  --lt-on-accent: var(--dark-bg-1);
+  /* Accent/coral in the role of text on the dark theme's violet backdrops */
+  --lt-accent-text: color-mix(in srgb, var(--violet-dark) 45%, var(--lavender-dark));
+  --lt-danger-text: var(--coral-dark);
+}
+
+/* ---------------------------------------------------------------------------
+   Base typography: H1 28/34 Sora 700 · H2 20/26 Sora 600 ·
+   text 14/22 Manrope 500 · captions 12/16 · data — tabular figures.
+--------------------------------------------------------------------------- */
+body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  margin: 0;
+}
+
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin: 0;
+}
+
+small,
+.lt-caption {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* Data: file names, timecodes, sizes — tabular figures. */
+.lt-data {
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Visible focus (WCAG AA). */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}

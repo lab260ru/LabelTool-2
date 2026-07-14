@@ -1,0 +1,19 @@
+.lt-select {
+  position: relative;
+  display: block;
+}
+
+.lt-select__control {
+  appearance: none;
+  padding-right: 34px;
+  cursor: pointer;
+}
+
+.lt-select__chevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-muted);
+}

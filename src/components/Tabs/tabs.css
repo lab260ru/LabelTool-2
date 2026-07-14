@@ -1,0 +1,44 @@
+.lt-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.lt-tabs__tab {
+  position: relative;
+  padding: 8px 14px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+  border-radius: var(--radius-s) var(--radius-s) 0 0;
+}
+
+.lt-tabs__tab:hover:not(:disabled) {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.lt-tabs__tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lt-tabs__tab--active {
+  color: var(--accent);
+}
+
+/* active tab — track segment at the bottom */
+.lt-tabs__tab--active::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 1.5px;
+  background: var(--accent);
+}

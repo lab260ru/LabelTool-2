@@ -1,0 +1,126 @@
+/* ============================================================================
+   Component showcase /showcase.
+   Theme tokens only (tokens.css); coral ≤10% of the area.
+   ========================================================================== */
+
+.lt-showcase__intro {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+.lt-showcase__divider {
+  margin: 10px 0 0;
+}
+
+.lt-showcase__divider--page {
+  margin-top: 14px;
+}
+
+.lt-showcase__section {
+  margin-top: 40px;
+}
+
+.lt-showcase__section .lt-showcase__divider {
+  margin-bottom: 20px;
+}
+
+/* --- Demo layout ------------------------------------------------------- */
+
+.lt-showcase__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.lt-showcase__row--top {
+  align-items: flex-start;
+}
+
+.lt-showcase__row--gap-top {
+  margin-top: 16px;
+}
+
+.lt-showcase__stack {
+  display: grid;
+  gap: 18px;
+  max-width: 480px;
+}
+
+.lt-showcase__stack--wide {
+  max-width: 720px;
+}
+
+.lt-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.lt-showcase__grid--forms {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  max-width: 960px;
+}
+
+.lt-showcase__demo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.lt-showcase__demo + .lt-showcase__demo {
+  margin-top: 16px;
+}
+
+.lt-showcase__row .lt-showcase__demo + .lt-showcase__demo,
+.lt-showcase__grid .lt-showcase__demo + .lt-showcase__demo,
+.lt-showcase__stack .lt-showcase__demo + .lt-showcase__demo {
+  margin-top: 0;
+}
+
+.lt-showcase__caption {
+  color: var(--text-muted);
+}
+
+.lt-showcase__hint {
+  margin: 0 0 14px;
+}
+
+/* --- Typography ----------------------------------------------------------- */
+
+.lt-showcase__type {
+  display: grid;
+  gap: 10px;
+  max-width: 720px;
+}
+
+.lt-showcase__type p {
+  margin: 0;
+}
+
+/* --- Logo on a dark backdrop (graphite in both themes) ---------------------- */
+
+.lt-showcase__dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding: 16px 22px;
+  background: var(--graphite);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--border);
+}
+
+/* --- Panel under the tabs ---------------------------------------------------- */
+
+.lt-showcase__tab-panel {
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  color: var(--text-muted);
+  max-width: 720px;
+}

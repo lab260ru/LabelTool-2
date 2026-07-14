@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- LabelTool 2 — фавиконка: виолетовый скруглённый квадрат со знаком «три дорожки».
+       Геометрия знака 234×201 снята с обложки брендбука (см. src/components/Logo/Logo.tsx);
+       композиция фиксирована: не искажать, не поворачивать, без теней. -->
+  <rect width="64" height="64" rx="14" fill="#6D5AE6" />
+  <g transform="translate(12 14.82) scale(0.17094)">
+    <!-- ряд 1: белый широкий + лавандовый малый -->
+    <rect x="0" y="0" width="118" height="48" rx="24" fill="#FFFFFF" />
+    <rect x="147" y="0" width="87" height="48" rx="24" fill="#D9D4F7" />
+    <!-- ряд 2: коралловый малый + белый широкий -->
+    <rect x="0" y="76" width="71" height="48" rx="24" fill="#E8604C" />
+    <rect x="94" y="76" width="140" height="48" rx="24" fill="#FFFFFF" />
+    <!-- ряд 3: лавандовый широкий + коралловый малый круглый -->
+    <rect x="0" y="153" width="157" height="48" rx="24" fill="#D9D4F7" />
+    <rect x="186" y="153" width="48" height="48" rx="24" fill="#E8604C" />
+  </g>
+</svg>

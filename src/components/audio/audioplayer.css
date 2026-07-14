@@ -1,0 +1,207 @@
+/* ============================================================================
+   Audio player with waveform — only theme tokens, both themes.
+   Waveform: lavender (--accent-soft) = "remaining", violet (--accent) = progress —
+   exactly the semantics of the "tracks" motif. Coral is not used here.
+   ========================================================================== */
+
+.lt-audio {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lt-audio__stage {
+  position: relative;
+  min-height: 112px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.lt-audio__wave {
+  min-height: 96px;
+}
+
+/* Region label (wavesurfer shadow DOM → ::part) */
+.lt-audio__wave ::part(region-content) {
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Region resize handles set the color inline — override with a theme token */
+.lt-audio__wave ::part(region-handle) {
+  border-color: color-mix(in srgb, var(--text) 55%, transparent) !important;
+}
+
+.lt-audio__wave:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+}
+
+.lt-audio__idle {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.lt-audio__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-m);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+
+.lt-audio__overlay--error {
+  padding: 10px 14px;
+}
+
+.lt-audio__banner {
+  width: 100%;
+  max-width: 640px;
+}
+
+/* ── Transport ─────────────────────────────────────────────────────────── */
+
+.lt-audio__controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.lt-audio__play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--lt-on-accent);
+  cursor: pointer;
+  flex: none;
+}
+
+.lt-audio__play:hover:not(:disabled) {
+  background: var(--lt-accent-hover);
+}
+
+.lt-audio__play:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.lt-audio__time {
+  min-width: 118px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.lt-audio__time-sep {
+  color: var(--text-muted);
+}
+
+/* Speed: segmented control built on tokens */
+.lt-audio__rates {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.lt-audio__rate {
+  height: 26px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lt-audio__rate:hover:not(:disabled) {
+  color: var(--text);
+  background: var(--lt-accent-soft-strong);
+}
+
+.lt-audio__rate--active {
+  background: var(--accent);
+  color: var(--lt-on-accent);
+}
+
+.lt-audio__rate--active:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--lt-on-accent);
+}
+
+.lt-audio__rate:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Zoom: slider built on tokens */
+.lt-audio__zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  flex: 1;
+  min-width: 140px;
+  max-width: 260px;
+  margin-left: auto;
+}
+
+.lt-audio__zoom-icon {
+  flex: none;
+}
+
+.lt-audio__zoom-range {
+  width: 100%;
+  height: 4px;
+  appearance: none;
+  border-radius: 2px;
+  background: var(--accent-soft);
+  cursor: pointer;
+}
+
+.lt-audio__zoom-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+}
+
+.lt-audio__zoom-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+}
+
+.lt-audio__zoom-range:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

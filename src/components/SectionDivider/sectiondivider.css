@@ -1,0 +1,26 @@
+.lt-divider {
+  display: flex;
+  gap: 3px; /* gap = ½ segment height (6px) */
+  margin: 8px 0 16px;
+}
+
+.lt-divider__seg {
+  height: 6px;
+  border-radius: 3px; /* corner radius = ½ height */
+}
+
+.lt-divider__seg--violet {
+  width: 64px;
+  background: var(--accent);
+}
+
+.lt-divider__seg--coral {
+  width: 18px;
+  background: var(--danger); /* coral — spot accent */
+}
+
+.lt-divider__seg--lavender {
+  width: 120px;
+  max-width: 30%;
+  background: var(--accent-soft);
+}

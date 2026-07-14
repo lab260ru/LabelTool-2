@@ -1,0 +1,257 @@
+/* ============================================================================
+   Styles for the Users feature (/admin/users).
+   Theme tokens only: semantic aliases adapt to light/dark.
+   Coral — pinpoint: labels of blocked permissions and danger buttons (≤10% of area).
+   ========================================================================== */
+
+/* ── Filters toolbar ──────────────────────────────────────────────────────── */
+
+.usr-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 18px 0 12px;
+}
+
+.usr-toolbar__search {
+  flex: 1 1 220px;
+  max-width: 320px;
+}
+
+.usr-toolbar__filter {
+  width: 180px;
+}
+
+.usr-toolbar__spacer {
+  flex: 1 1 auto;
+}
+
+/* ── Bulk actions panel ─────────────────────────────────────────────── */
+
+.usr-bulk {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 8px 14px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.usr-bulk--active {
+  border-color: var(--accent);
+  background: var(--lt-accent-soft-strong);
+}
+
+.usr-bulk__count {
+  color: var(--text-muted);
+}
+
+/* ── Role in the table ────────────────────────────────────────────────────── */
+
+.usr-role {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  background: var(--lt-surface-2);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.usr-role--admin {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.usr-role--super {
+  background: var(--accent);
+  color: var(--lt-on-accent);
+}
+
+/* ── Permission summary in the table row ──────────────────────────────────── */
+
+.usr-perms {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.usr-perm-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  padding: 1px 6px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.usr-perm-chip--allow {
+  background: var(--lt-ok-soft);
+  color: var(--ok);
+}
+
+.usr-perm-chip--block {
+  background: var(--lt-danger-soft);
+  color: var(--lt-danger-text); /* AA contrast on the soft background */
+}
+
+/* Value pinned by an admin — border (see the legend under the table). */
+.usr-perm-chip--admin {
+  border-color: currentColor;
+}
+
+.usr-legend {
+  margin: 8px 2px 0;
+  color: var(--text-muted);
+}
+
+/* ── Permission matrix (modal) ────────────────────────────────────────────── */
+
+.usr-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.usr-matrix__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.usr-matrix__table th,
+.usr-matrix__table td {
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.usr-matrix__table thead th {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.usr-matrix__table tbody tr:last-child th,
+.usr-matrix__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.usr-matrix__type {
+  font-weight: 700;
+  white-space: nowrap;
+  padding-top: 16px;
+}
+
+.usr-matrix__value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 220px;
+}
+
+.usr-matrix__value .lt-field {
+  flex: 1;
+}
+
+.usr-matrix__locked {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+}
+
+.usr-matrix__effective {
+  white-space: nowrap;
+  padding-top: 14px;
+}
+
+.usr-matrix__admin-note {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-muted);
+}
+
+/* ── Modal forms ──────────────────────────────────────────────────────────── */
+
+.usr-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.usr-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.usr-form__note {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.usr-form__subtitle {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.usr-form__link-hint {
+  margin: 0;
+  color: var(--text-muted);
+  align-self: center;
+}
+
+.usr-form__link-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.usr-form__link-field {
+  flex: 1;
+}
+
+/* Row checkbox — without a text label (the label is hidden for screen readers). */
+.usr-row-check {
+  display: inline-flex;
+}
+
+/* ── Visually hidden but screen-reader-accessible text (WCAG) ─────────────── */
+
+.usr-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── Tablet: filters stacked, the table scrolls on its own ────────── */
+
+@media (max-width: 860px) {
+  .usr-toolbar__search {
+    max-width: none;
+  }
+
+  .usr-form__row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,357 @@
+/* ============================================================================
+   «Dataset export» screen.
+   Theme tokens only: var(--…), coral — pinpoint (≤10%).
+   ========================================================================== */
+
+.ex-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* --- Header: back · title · project chip ------------------------------- */
+
+.ex-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ex-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  color: var(--text-muted);
+  background: transparent;
+  text-decoration: none;
+}
+
+.ex-back:hover {
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.ex-proj {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.ex-proj svg {
+  flex-shrink: 0;
+}
+
+/* --- Main grid: form | history -------------------------------------- */
+
+.ex-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .ex-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ex-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ex-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ex-legend {
+  padding: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* --- Task types (toggle chips) --------------------------------------- */
+
+.ex-types {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ex-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 30px;
+  padding: 0 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 99px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.ex-type[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.ex-type__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 99px;
+  background: var(--lt-border-strong);
+  flex-shrink: 0;
+}
+
+.ex-type[aria-pressed='true'] .ex-type__dot {
+  background: var(--accent);
+}
+
+.ex-types-hint {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--warn);
+}
+
+/* --- Format cards (radio semantics) ----------------------------------- */
+
+.ex-formats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .ex-formats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ex-fmt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 11px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.ex-fmt:hover {
+  border-color: var(--lt-border-strong);
+}
+
+.ex-fmt--selected,
+.ex-fmt--selected:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* The radio is visually hidden but stays in focus order (arrows within the group). */
+.ex-fmt__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ex-fmt:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ex-fmt__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ex-fmt__check {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.ex-fmt__desc {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+.ex-fmt__purpose {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ex-fmt--selected .ex-fmt__purpose {
+  color: var(--lt-accent-text); /* AA contrast on the lavender/violet background */
+}
+
+/* On the selected card the lavender/violet background: muted does not reach 4.5:1 */
+.ex-fmt--selected .ex-fmt__desc {
+  color: var(--text);
+}
+
+/* --- Options ------------------------------------------------------------------ */
+
+.ex-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ex-submit {
+  align-self: flex-start;
+}
+
+/* --- "Exports": the export being built + history ----------------------------- */
+
+.ex-hist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ex-run {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-m);
+  background: var(--lt-accent-soft-strong);
+}
+
+.ex-run__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ex-run__name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.ex-run__meta {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+.ex-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+}
+
+.ex-item__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.ex-item__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.ex-item__meta {
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+/* --- Icon buttons (download / cancel) ------------------------------------- */
+
+.ex-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.ex-iconbtn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ex-iconbtn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* Cancel — the only coral spot on the screen (pinpoint). */
+.ex-iconbtn--danger:hover:not(:disabled) {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* --- Service states ----------------------------------------------------- */
+
+.ex-loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}

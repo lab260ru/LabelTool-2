@@ -1,0 +1,36 @@
+.lt-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+}
+
+.lt-card--pad-md {
+  padding: 16px;
+}
+
+.lt-card--pad-lg {
+  padding: 24px;
+}
+
+.lt-card--pad-none {
+  padding: 0;
+}
+
+.lt-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.lt-card__title {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.lt-card__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}

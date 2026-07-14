@@ -1,0 +1,56 @@
+/* LabelTool 2 logo. No shadows or outlines. */
+
+.lt-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  color: var(--lt-logo-contrast);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.lt-logo__word {
+  /* Sora SemiBold; the word «LabelTool» is Latin, rendered in Sora */
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+/* "2" is always violet: violet on light, violet-dark on dark/graphite */
+.lt-logo__two {
+  color: var(--violet);
+  font-weight: 700;
+}
+
+:root[data-theme='dark'] .lt-logo__two {
+  color: var(--violet-dark);
+}
+
+.lt-logomark {
+  flex: none;
+}
+
+.lt-logomark__contrast {
+  fill: var(--lt-logo-contrast);
+}
+
+.lt-logomark__lavender {
+  fill: var(--lavender);
+}
+
+.lt-logomark__coral {
+  fill: var(--coral);
+}
+
+/* The "on dark" version (used on the graphite top bar and violet backdrops) */
+.lt-logo--ondark,
+.lt-logo--ondark .lt-logomark__contrast {
+  color: var(--white);
+  fill: var(--white);
+}
+
+.lt-logo--ondark .lt-logo__two {
+  color: var(--violet-dark);
+}

@@ -1,0 +1,60 @@
+/* Login screen: centered card outside layouts (no topbar/sidebar). */
+
+.lt-login {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--bg);
+}
+
+.lt-login__card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.lt-login__logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.lt-login__title {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.lt-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lt-login__error {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--danger);
+}
+
+/* Link toggling between login and registration */
+.lt-login__alt {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-muted);
+}
+
+.lt-login__link {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* The registration card is a bit wider — more fields */
+.lt-login__card--register {
+  max-width: 420px;
+}

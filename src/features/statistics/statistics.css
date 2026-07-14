@@ -1,0 +1,244 @@
+/* ============================================================================
+   Statistics — screen styles.
+   Only theme-token CSS variables; coral (--danger) —
+   pinpoint: highlighting low agreement. Both themes — via semantic aliases.
+   ========================================================================== */
+
+.st-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.st-divider {
+  margin-top: 12px;
+}
+
+/* ── Table filters (student/group/search) ──────────────────────────────── */
+
+.st-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.st-filters .lt-field {
+  flex: 0 1 220px;
+  min-width: 170px;
+}
+
+.st-filters__reset {
+  margin-bottom: 3px;
+}
+
+/* ── Table: full name + login, low-agreement highlight ────────────────────── */
+
+.st-user {
+  display: flex;
+  flex-direction: column;
+}
+
+.st-user__login {
+  color: var(--text-muted);
+}
+
+/* Coral ≤10%: only individual problematic values (agreement < 70%). */
+.st-low {
+  color: var(--lt-danger-text); /* AA text contrast */
+  font-weight: 700;
+}
+
+/* ── Cards grid (charts, project blocks) ────────────────────────────── */
+
+.st-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.st-card-loading {
+  display: flex;
+  justify-content: center;
+  padding: 28px 0;
+}
+
+.st-hint {
+  color: var(--text-muted);
+  margin: 0 0 14px;
+}
+
+/* ── Mini bar chart "tasks per week" (SVG, theme tokens) ───────────────────── */
+
+.st-chart {
+  display: block;
+  width: 100%;
+  max-width: 430px;
+  height: auto;
+}
+
+.st-chart__axis {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.st-chart__bar {
+  fill: var(--accent);
+}
+
+.st-chart__value {
+  fill: var(--text);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.st-chart__label {
+  fill: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* ── Task-type distribution: CSS bars in the «track» motif:
+      rounding = ½ of the bar height, remainder — --accent-soft (lavender) ─────── */
+
+.st-dist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.st-dist__row {
+  display: grid;
+  grid-template-columns: minmax(96px, 130px) 1fr minmax(72px, auto);
+  align-items: center;
+  gap: 12px;
+}
+
+.st-dist__name {
+  font-size: 13px;
+}
+
+.st-dist__track {
+  display: block;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--accent-soft);
+  overflow: hidden;
+}
+
+.st-dist__fill {
+  display: block;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--accent);
+}
+
+.st-dist__num {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── "Agreement metrics" block: summary figures + mini-table ─────────── */
+
+.st-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin: 0 0 16px;
+}
+
+.st-stats__item {
+  margin: 0;
+}
+
+.st-stats__label {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.st-stats__value {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+}
+
+.st-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.st-mini-table th {
+  text-align: left;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.st-mini-table td {
+  font-size: 13px;
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.st-mini-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.st-mini-table__num {
+  text-align: right;
+}
+
+/* ── "Project progress" block (TrackProgress) ─────────────────────────────── */
+
+.st-progress-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.st-progress-list__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.st-progress-list__name {
+  font-size: 13px;
+}
+
+.st-progress-list__count {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Tablet: filters and grids do not break on a narrow screen. */
+@media (max-width: 720px) {
+  .st-filters .lt-field {
+    flex-basis: 100%;
+  }
+
+  .st-dist__row {
+    grid-template-columns: minmax(84px, 110px) 1fr minmax(64px, auto);
+    gap: 8px;
+  }
+}

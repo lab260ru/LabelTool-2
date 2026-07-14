@@ -1,0 +1,96 @@
+.lt-stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+}
+
+.lt-step {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+/* connector line between steps */
+.lt-step + .lt-step::before {
+  content: '';
+  width: 24px;
+  height: 3px;
+  border-radius: 1.5px;
+  margin: 0 6px;
+  background: var(--accent-soft);
+  flex: none;
+}
+
+/* line after a completed step — violet */
+.lt-step--done + .lt-step::before {
+  background: var(--accent);
+}
+
+.lt-step__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+}
+
+button.lt-step__btn {
+  cursor: pointer;
+}
+
+button.lt-step__btn:hover {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.lt-step__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
+/* completed: violet + ✓ */
+.lt-step--done .lt-step__dot {
+  background: var(--accent);
+  color: var(--lt-on-accent);
+}
+
+.lt-step--done .lt-step__label {
+  color: var(--text-muted);
+}
+
+/* active */
+.lt-step--active .lt-step__dot {
+  background: var(--accent);
+  color: var(--lt-on-accent);
+  box-shadow: 0 0 0 4px var(--lt-accent-soft-strong);
+}
+
+.lt-step--active .lt-step__label {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* future */
+.lt-step--future .lt-step__dot {
+  background: var(--accent-soft);
+  color: var(--lt-accent-text); /* AA contrast for the number on lavender */
+}
+
+.lt-step--future .lt-step__label {
+  color: var(--text-muted);
+}

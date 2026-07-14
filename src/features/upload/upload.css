@@ -1,0 +1,612 @@
+/* ============================================================================
+   Data upload wizard. Only theme tokens:
+   semantic theme aliases + utility --lt-* from src/theme/tokens.css.
+   Coral — sparingly: danger buttons and error statuses (≤10%).
+   ========================================================================== */
+
+.lt-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lt-upload--loading {
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+/* ── Header: ← / H1 / project chip ───────────────────────────────────────── */
+
+.lt-upload__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.lt-upload__back {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  color: var(--text-muted);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.lt-upload__back:hover {
+  background: var(--lt-surface-2);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.lt-upload__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* Project task-type chip (the type is fixed at project creation) */
+.lt-upload__chip--type {
+  border-color: var(--lt-border-strong);
+  background: var(--lt-accent-soft-strong);
+  color: var(--lt-accent-text);
+  font-weight: 700;
+}
+
+.lt-upload__banner {
+  max-width: 880px;
+}
+
+.lt-upload__stepper {
+  margin-top: 2px;
+}
+
+/* ── Shared for step panels ──────────────────────────────────────────────── */
+
+.lt-upload__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 880px;
+}
+
+.lt-upload__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lt-upload__spacer {
+  flex: 1;
+}
+
+.lt-upload__note {
+  color: var(--text-muted);
+}
+
+.lt-upload__subhead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lt-upload__subtitle {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.lt-upload__hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2px 0;
+}
+
+/* The "Task type" step was removed: the type is set on project creation (Project.task_type),
+   the radio cards moved into the project modal (projects.css, .ltp-type*). */
+
+/* ── Step 1: tabs and file list ──────────────────────────────────────────── */
+
+.lt-upload__step2 {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 880px;
+}
+
+.lt-upload__tabbody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Side-by-Side: hint about _a/_b suffixes above the dropzone */
+.lt-upload__sbs-hint {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.lt-upload__filelist {
+  overflow: hidden;
+}
+
+.lt-upload__frows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lt-upload__frow {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1.4fr) 62px 84px minmax(150px, 1fr) 32px;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.lt-upload__ficon {
+  color: var(--text-muted);
+}
+
+.lt-upload__fname {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lt-upload__fmeta {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+.lt-upload__fbadge {
+  justify-self: start;
+}
+
+.lt-upload__fremove {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.lt-upload__fremove:hover {
+  color: var(--lt-danger-text); /* contrast ≥3:1 on the soft background */
+  background: var(--lt-danger-soft);
+}
+
+.lt-upload__ffooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+}
+
+.lt-upload__fsummary {
+  color: var(--text-muted);
+}
+
+/* ── Step 2: manifest CSV/JSONL ──────────────────────────────────────────── */
+
+.lt-upload__mloading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+}
+
+.lt-upload__mpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lt-upload__mhead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lt-upload__mchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  background: var(--lt-surface-2);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.lt-upload__mchip-note {
+  color: var(--text-muted);
+}
+
+.lt-upload__mvalid {
+  font-weight: 700;
+  color: var(--ok);
+}
+
+.lt-upload__minvalid {
+  font-weight: 700;
+  color: var(--lt-danger-text); /* AA text contrast */
+}
+
+.lt-upload__mmap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.lt-upload__mmap-label {
+  color: var(--text-muted);
+}
+
+.lt-upload__mmap-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.lt-upload__mmap-col {
+  font-size: 12px;
+  line-height: 16px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  background: var(--lt-surface-2);
+}
+
+.lt-upload__mmap-select .lt-field__control {
+  height: 32px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 12px;
+}
+
+/* The wide table scrolls inside its own wrapper */
+.lt-upload__mtable-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+}
+
+.lt-upload__mtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.lt-upload__mtable th {
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--lt-surface-2);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.lt-upload__mtable td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lt-upload__mtable tr:last-child td {
+  border-bottom: 0;
+}
+
+.lt-upload__mrow--invalid td {
+  background: var(--lt-danger-soft);
+}
+
+.lt-upload__mrow-err {
+  color: var(--lt-danger-text); /* AA contrast on the row's danger-soft background */
+}
+
+.lt-upload__mhint {
+  color: var(--text-muted);
+}
+
+/* ── Step 3: ASR drafts ──────────────────────────────────────────────────── */
+
+.lt-upload__asr-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lt-upload__asr-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lt-upload__asr-name {
+  flex: none;
+  width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.lt-upload__asr-field {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Step 4: progress ────────────────────────────────────────────────────── */
+
+.lt-upload__p-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.lt-upload__p-main {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lt-upload__p-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lt-upload__p-counter {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.lt-upload__p-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  overflow: hidden;
+}
+
+.lt-upload__p-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1.3fr) minmax(120px, 1fr) minmax(150px, auto);
+  gap: 12px;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.lt-upload__p-row:last-child {
+  border-bottom: 0;
+}
+
+.lt-upload__p-ico {
+  display: inline-flex;
+  color: var(--text-muted);
+}
+
+.lt-upload__p-row--done .lt-upload__p-ico {
+  color: var(--ok);
+}
+
+.lt-upload__p-row--error .lt-upload__p-ico {
+  color: var(--danger);
+}
+
+.lt-upload__p-row--uploading .lt-upload__p-ico {
+  color: var(--accent);
+}
+
+.lt-upload__p-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lt-upload__p-row--queued .lt-upload__p-name {
+  color: var(--text-muted);
+}
+
+/* Mini track: filled — violet/green/coral, remainder — lavender */
+.lt-upload__p-bar {
+  display: block;
+  height: 5px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--accent-soft) 60%, transparent);
+  overflow: hidden;
+}
+
+.lt-upload__p-fill {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: var(--accent);
+  transition: width 160ms ease;
+}
+
+.lt-upload__p-row--done .lt-upload__p-fill {
+  background: var(--ok);
+}
+
+.lt-upload__p-row--error .lt-upload__p-fill {
+  background: var(--danger);
+}
+
+.lt-upload__p-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.lt-upload__p-st-done {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.lt-upload__p-st-error {
+  color: var(--lt-danger-text); /* AA status text contrast */
+  font-weight: 700;
+}
+
+.lt-upload__p-st-queued {
+  color: var(--text-muted);
+}
+
+.lt-upload__p-retry {
+  flex: none;
+}
+
+/* ── Step 5: summary ─────────────────────────────────────────────────────── */
+
+.lt-upload__s-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.lt-upload__s-check {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--lt-ok-soft);
+  color: var(--ok);
+}
+
+.lt-upload__errbox {
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
+  border-radius: var(--radius-s);
+  overflow: hidden;
+}
+
+.lt-upload__errbox-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--lt-danger-soft);
+  border-bottom: 1px solid color-mix(in srgb, var(--danger) 30%, transparent);
+}
+
+.lt-upload__errbox-title {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  color: var(--lt-danger-text); /* AA contrast on the danger-soft header */
+}
+
+.lt-upload__err-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lt-upload__err-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.lt-upload__err-row:last-child {
+  border-bottom: 0;
+}
+
+.lt-upload__err-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lt-upload__err-why {
+  flex: none;
+  color: var(--text-muted);
+}
+
+/* ── Tablet: grids don't break on narrow screens ─────────────────── */
+
+@media (max-width: 720px) {
+  .lt-upload__frow {
+    grid-template-columns: 20px minmax(0, 1fr) 84px 32px;
+  }
+
+  .lt-upload__fdur {
+    display: none;
+  }
+
+  .lt-upload__fbadge {
+    grid-column: 2 / span 2;
+  }
+
+  .lt-upload__p-row {
+    grid-template-columns: 20px minmax(0, 1fr) minmax(140px, auto);
+  }
+
+  .lt-upload__p-bar {
+    grid-column: 2 / span 2;
+  }
+
+  .lt-upload__asr-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .lt-upload__asr-name {
+    width: auto;
+  }
+}

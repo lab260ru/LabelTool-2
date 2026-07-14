@@ -1,0 +1,484 @@
+/* ============================================================================
+   Annotator workspace — only theme tokens, both themes.
+   Coral — sparingly: danger actions (delete segment) and the "No" button.
+   ========================================================================== */
+
+.ws-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.ws-page--center {
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+.ws-muted {
+  color: var(--text-muted);
+}
+
+/* ── Hub ──────────────────────────────────────────────────────────────────── */
+
+.ws-hub-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 5fr) minmax(320px, 7fr);
+  gap: 16px;
+  /* stretch (default) — the "Take a task" and "Instruction" cards are the same height */
+}
+
+.ws-hub-take__text {
+  margin: 0 0 14px;
+}
+
+
+/* ── Workspace: header ────────────────────────────────────────────────────── */
+
+.ws-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ws-head__spacer {
+  flex: 1;
+}
+
+.ws-title {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.ws-back {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ws-ctx {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  font-size: 12px;
+  color: var(--text-muted);
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Frame: center + sliding instruction ──────────────────────────────────── */
+
+.ws-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 16px;
+  align-items: start;
+}
+
+.ws-layout--full {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ws-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.ws-aside {
+  position: sticky;
+  top: 72px; /* below the topbar */
+}
+
+.ws-instruction {
+  white-space: pre-wrap;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* ── Hotkeys hint ─────────────────────────────────────────────────────────── */
+
+.ws-hotkeys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 12px 0 0;
+  color: var(--text-muted);
+}
+
+.ws-hotkeys__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ws-kbd {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 6px;
+  border: 1px solid var(--lt-border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--surface);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+/* ── Class/speaker chip-buttons ───────────────────────────────────────────── */
+
+.ws-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ws-chipbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 6px;
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ws-chipbtn:hover {
+  border-color: var(--lt-border-strong);
+}
+
+.ws-chipbtn--active {
+  border-color: var(--accent);
+  background: var(--lt-accent-soft-strong);
+}
+
+/* ── MOS rating: configurable project scales (each 1–5) ───────────────────── */
+
+.ws-mos-scales {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ws-mos-scales__hint {
+  margin: 0;
+}
+
+/* Active scale (first unrated) — accent border, 1–5 act on it */
+.ws-mos-card--active {
+  border-color: var(--accent);
+}
+
+/* Focus target for hotkey focus move (tabindex=-1): visible ring */
+.ws-mos:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-s);
+}
+
+.ws-mos {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(96px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ws-mosbtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.ws-mosbtn:hover {
+  border-color: var(--lt-border-strong);
+}
+
+.ws-mosbtn--active {
+  border-color: var(--accent);
+  background: var(--lt-accent-soft-strong);
+}
+
+.ws-mosbtn__score {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.ws-mosbtn--active .ws-mosbtn__score,
+.ws-mosbtn--active .ws-mosbtn__label {
+  color: var(--lt-accent-text); /* AA contrast on the soft background */
+}
+
+.ws-mosbtn__label {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .ws-mos {
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  }
+}
+
+/* ── Side-by-Side: two players side by side + preference scale ────────────── */
+
+.ws-sbs-players {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ws-sbs-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.ws-sbs-col__label {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.ws-sbs-scale {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ws-sbsbtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 8px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  text-align: center;
+  cursor: pointer;
+}
+
+.ws-sbsbtn:hover {
+  border-color: var(--lt-border-strong);
+}
+
+.ws-sbsbtn--active {
+  border-color: var(--accent);
+  background: var(--lt-accent-soft-strong);
+}
+
+.ws-sbsbtn__label {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.ws-sbsbtn--active .ws-sbsbtn__label {
+  color: var(--lt-accent-text); /* AA contrast on the soft background */
+}
+
+/* Tablet/narrow: players stacked, scale — 5 per row with wrapping */
+@media (max-width: 720px) {
+  .ws-sbs-players {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ws-sbs-scale {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+/* ── Verification ─────────────────────────────────────────────────────────── */
+
+.ws-verify-text {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  background: var(--surface);
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.ws-verify-author {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+}
+
+.ws-verify-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+
+/* ── Segments ─────────────────────────────────────────────────────────────── */
+
+.ws-seg-toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.ws-seg-palette {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ws-seg-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ws-seg-row {
+  display: grid;
+  grid-template-columns: auto minmax(120px, 200px) 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ws-seg-row:last-child {
+  border-bottom: 0;
+}
+
+.ws-seg-row--active {
+  background: var(--lt-accent-soft-strong);
+  border-radius: var(--radius-s);
+}
+
+.ws-seg-pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ws-seg-pick[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ws-seg-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* Inline label Select — without lt-field's extra margins */
+.ws-seg-select {
+  margin: 0;
+}
+
+.ws-seg-time {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.ws-seg-actions {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.ws-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.ws-iconbtn:hover {
+  background: var(--lt-accent-soft-strong);
+  color: var(--lt-accent-text); /* contrast on the soft background */
+}
+
+.ws-iconbtn--danger:hover {
+  background: var(--lt-danger-soft);
+  color: var(--lt-danger-text); /* contrast on the soft background */
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────── */
+
+.ws-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ws-validation {
+  color: var(--text-muted);
+}
+
+/* ── Tablet/laptop ────────────────────────────────────────────────── */
+
+@media (max-width: 1080px) {
+  .ws-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ws-aside {
+    position: static;
+    order: -1;
+  }
+
+  .ws-hub-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

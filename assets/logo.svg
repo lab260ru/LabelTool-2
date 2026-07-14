@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 170" width="600" height="170" role="img" aria-label="LabelTool 2">
+  <!-- Логотип LabelTool 2 (инверсия на фирменном виолетовом).
+       Знак «три дорожки» — геометрия 234×201, композиция фиксирована. -->
+  <rect width="600" height="170" rx="30" fill="#6D5AE6"/>
+  <g transform="translate(56 53) scale(0.3184)">
+    <rect x="0"   y="0"   width="118" height="48" rx="24" fill="#FFFFFF"/>
+    <rect x="147" y="0"   width="87"  height="48" rx="24" fill="#D9D4F7"/>
+    <rect x="0"   y="76"  width="71"  height="48" rx="24" fill="#E8604C"/>
+    <rect x="94"  y="76"  width="140" height="48" rx="24" fill="#FFFFFF"/>
+    <rect x="0"   y="153" width="157" height="48" rx="24" fill="#D9D4F7"/>
+    <rect x="186" y="153" width="48"  height="48" rx="24" fill="#E8604C"/>
+  </g>
+  <text x="162" y="104" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif" font-size="54" font-weight="700" fill="#FFFFFF">LabelTool<tspan fill="#D9D4F7" font-weight="800"> 2</tspan></text>
+</svg>
